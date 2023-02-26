@@ -1,4 +1,5 @@
 from random import randrange, seed
+import ai
 
 def makecode():
     seed()
@@ -39,13 +40,14 @@ def comp(guess, secret):
 
 
 def run():
-    modus = input('MasterMind, Crack the code\n1: Speel zelf\n2: Algoritme 1\n3: Algoritme 2\n4: Algoritme 3\nKies een modus: ')
+    modus = input('MasterMind, Crack the code\n1: Speel zelf\n2: Simple Algoritme\n3: Worst Case Algoritme\n'
+                  '4: Zelfgemaakte Algoritme\nKies een modus: ')
     match modus:
         case '1':
             playgame(makecode())
         case '2':
-            pass
+            ai.simple()
         case '3':
-            pass
+            ai.worstcase()
         case '4':
-            pass
+            ai.newAlgorithm()
