@@ -62,6 +62,7 @@ def worstcase():
     print('De ai heeft de code niet geraden.')
 
 def newAlgorithm():
+    # Deze methode werkt door het gemiddelde te pakken ipv laagste
     print('Worstcase algoritme wordt nu gespeeld')
     secret = spel.makecode()
     print(f'Code {secret} wordt nu geraden')
@@ -83,7 +84,7 @@ def newAlgorithm():
                             count += 1
                     if count > possibilities[j]:
                         possibilities[j] = count
-            guess = list(possibilities.values()).sort()[len(possibilities) / 2]
+            guess = list(j for j in possibilities if possibilities[j] == sorted(list(possibilities.values()))[int(len(possibilities) / 2)])[0]
 
         print(f'Poging {i + 1}/10: {guess}')
         response = spel.comp(guess, secret)
