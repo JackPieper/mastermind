@@ -14,6 +14,8 @@ def simple():
         guess = list1[0]
         turn(guess, secret, list1, list2, i)
         list1, list2 = list2, []
+        if len(list1) <= 1:
+            return None
     print('De ai heeft de code niet geraden.')
 
 
@@ -30,7 +32,10 @@ def worstcase():
             guess = ['A', 'A', 'B', 'B']
         else:
             possibilities = answers(list1)
-            guess = min(possibilities, key=possibilities.get)
+            if possibilities:
+                guess = min(possibilities, key=possibilities.get)
+            else:
+                return None
         turn(guess, secret, list1, list2, i)
         list1, list2 = list2, []
     print('De ai heeft de code niet geraden.')
@@ -48,7 +53,10 @@ def newAlgorithm():
             guess = ['A', 'A', 'B', 'B']
         else:
             possibilities = answers(list1)
-            guess = list(j for j in possibilities if possibilities[j] == sorted(list(possibilities.values()))[int(len(possibilities) / 2)])[0]
+            if possibilities:
+                guess = list(j for j in possibilities if possibilities[j] == sorted(list(possibilities.values()))[int(len(possibilities) / 2)])[0]
+            else:
+                return None
         turn(guess, secret, list1, list2, i)
         list1, list2 = list2, []
     print('De ai heeft de code niet geraden.')
